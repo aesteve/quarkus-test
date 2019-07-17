@@ -20,6 +20,7 @@ dependencies {
 
 tasks.quarkusDev {
     setSourceDir(project.projectDir.resolve("src/main/kotlin").absolutePath)
+    println(project.sourceSets.joinToString(separator=",", transform= {it.output.classesDirs.joinToString(separator=",", transform={it.absolutePath})}))
     val quarkusPluginExtension = project.extensions.findByName("quarkus")as QuarkusPluginExtension
     println("Output directory before ${quarkusPluginExtension.outputDirectory()}")
     quarkusPluginExtension.setOutputDirectory(project.buildDir.resolve("classes/kotlin/main").absolutePath)
