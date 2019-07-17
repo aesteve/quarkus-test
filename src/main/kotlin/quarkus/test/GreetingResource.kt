@@ -6,7 +6,7 @@ import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
 @Path("/")
-class GreetingResource {
+open class GreetingResource {
     @GET
     @Path("/hello")
     @Produces(MediaType.APPLICATION_JSON)
