@@ -1,3 +1,5 @@
+import io.quarkus.gradle.QuarkusPluginExtension
+
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin on the JVM.
     id("org.jetbrains.kotlin.jvm") version("1.3.41")
@@ -18,5 +20,8 @@ dependencies {
 
 tasks.quarkusDev {
     setSourceDir(project.projectDir.resolve("src/main/kotlin").absolutePath)
-    // setBuildDir(project.buildDir.resolve("classes/kotlin/main").absolutePath)
+    val quarkusPluginExtension = project.extensions.findByName("quarkus")as QuarkusPluginExtension
+    println("Output directory before ${quarkusPluginExtension.outputDirectory()}")
+    quarkusPluginExtension.setOutputDirectory(project.buildDir.resolve("classes/kotlin/main").absolutePath)
+    println("Output directory after ${quarkusPluginExtension.outputDirectory()}")
 }
