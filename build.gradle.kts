@@ -11,12 +11,12 @@ repositories {
 
 dependencies {
     implementation(enforcedPlatform("io.quarkus:quarkus-bom:0.19.1"))
-    implementation("io.quarkus:quarkus-resteasy")
+    implementation("io.quarkus:quarkus-resteasy-jsonb")
     implementation("io.quarkus:quarkus-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 
-tasks.quarkusDev {
+quarkus {
     setSourceDir(project.projectDir.resolve("src/main/kotlin").absolutePath)
-    // setBuildDir(project.buildDir.resolve("classes/kotlin/main").absolutePath)
+    setOutputDirectory(project.buildDir.resolve("classes/kotlin/main").absolutePath)
 }
